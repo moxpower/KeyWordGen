@@ -1,6 +1,6 @@
 # Crawls for file server
 Contains:
 
-Key word generator
+Key word generator (incl tokenizing,...)
 
-Directory crawler
+Directory crawler 
