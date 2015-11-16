@@ -88,7 +88,7 @@ with open(keywordsfile,'w') as f:
             result = []
             msg = []
             pdindex=proj_no[index]
-            for root, dirs, files in os.walk(link, topdown=False):
+            for root, dirs, files in os.walk(link.encode('utf8'), topdown=False):
                 """if time.time() > start + 2:
                     break
                 else:"""
@@ -105,7 +105,9 @@ with open(keywordsfile,'w') as f:
             big_regex = re.compile('|'.join(map(re.escape, redundand)))
             the_message = big_regex.sub(" ",str(arr1))
             msg=' '.join(unique_list(str(the_message).split()))
+            msg1=[term for term in preprocess(msg) if unicode(term, 'utf-8', errors='ignore') not in stop]
             w.writerow([pdindex,len(msg)])
 #            w.writerow([proj_no[index],str(arr1)])
     except:
         pass
+
